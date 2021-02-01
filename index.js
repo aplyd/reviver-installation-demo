@@ -1,6 +1,9 @@
 const installerCoordinates = {};
-const zipCodesToLookUp = [];
+let zip;
 let userLocation = null;
+
+const zipInput = document.getElementById("zip-input");
+const zipForm = document.getElementById("zip-form");
 
 // Asking demo user to enter API key and storing in localStorage for security purposes.
 // Don't want the key saved in the repo
@@ -24,7 +27,9 @@ if (!API_KEY || API_KEY === "null") {
 
 // Ask for user location via browser geolocation API.
 // User can block access and still enter their ZIP
-document.getElementById("zip-input").addEventListener("focus", () => {
+zipInput.addEventListener("focus", () => {
+  zipInput.value = "";
+
   const options = {
     enableHighAccuracy: true,
     timeout: 5000,
@@ -48,3 +53,18 @@ document.getElementById("zip-input").addEventListener("focus", () => {
 
   navigator.geolocation.getCurrentPosition(success, error, options);
 });
+
+zipForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  zip = zipInput.value;
+  console.log(zip);
+});
+
+// TODO - waiting for Google API dashboard access
+const URL = `http://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=H8MW%2BWP%20Kolkata%20India&destinations=GCG2%2B3M%20Kolkata%20India&key=${API_KEY}`;
+
+if (API_KEY && API_KEY !== "null") {
+  fetch(URL)
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+}
