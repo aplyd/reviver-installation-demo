@@ -116,6 +116,10 @@ img {
   grid-column: 2;
 }
 
+#map {
+  height: 100%;
+}
+
 @media screen and (min-width: 425px) {
   .form-container input {
     grid-column: 1 /2;
