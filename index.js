@@ -275,8 +275,9 @@ function initMap() {
           // create and open info window
           const infoWindow = new google.maps.InfoWindow({
             content: `
-            <h3><b>${installers[indexOfNearestInstaller].name}</b></h3>
-            <p>${installers[indexOfNearestInstaller].address}, ${installers[indexOfNearestInstaller].city}, ${installers[indexOfNearestInstaller].state} ${installers[indexOfNearestInstaller].zip}</p>
+            <a href="https://maps.google.com/?ll=${installerCoordinates[indexOfNearestInstaller].lat},${installerCoordinates[indexOfNearestInstaller].lng}
+            "><h3><b>${installers[indexOfNearestInstaller].name}</b></h3>
+            <p>${installers[indexOfNearestInstaller].address}, ${installers[indexOfNearestInstaller].city}, ${installers[indexOfNearestInstaller].state} ${installers[indexOfNearestInstaller].zip}</p></a>
             `
           });
           map.panTo(installerCoordinates[indexOfNearestInstaller]);
