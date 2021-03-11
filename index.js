@@ -192,7 +192,7 @@ const installerCoordinates = installers.map(
 let API_KEY = localStorage.getItem('API_KEY');
 
 if (!API_KEY || API_KEY === 'null') {
-  API_KEY = prompt('Please enter your Google Geolocation API key', '');
+  API_KEY = prompt('Please enter your Google Maps API key', '');
   localStorage.setItem('API_KEY', API_KEY);
 }
 
@@ -285,4 +285,13 @@ function initMap() {
       }
     );
   }
+}
+
+function gm_authFailure() {
+  alert('Invalid API key');
+  API_KEY = prompt(
+    'Please enter your Google Maps API key, click OK and then refresh the page',
+    ''
+  );
+  localStorage.setItem('API_KEY', API_KEY);
 }
