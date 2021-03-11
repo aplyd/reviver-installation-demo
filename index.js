@@ -222,13 +222,12 @@ function initMap() {
         if (json.results[0]) {
           userCoordinates = json.results[0].geometry.location;
 
-          // set user location on the map
-          const marker = new google.maps.Marker({
-            position: userCoordinates,
-            label: 'You'
-          });
+          // set user location on the map - commented out incase needed later
+          // const marker = new google.maps.Marker({
+          //   position: userCoordinates,
+          // });
 
-          marker.setMap(map);
+          // marker.setMap(map);
 
           findNearest(userCoordinates);
         } else {
